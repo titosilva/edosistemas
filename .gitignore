@@ -1,0 +1,5 @@
+# Arquivos a serem ignorados pelo git
+
+**/teste
+**/teste.c
+**/a.out
