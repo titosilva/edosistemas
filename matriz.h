@@ -2,15 +2,22 @@
 #ifndef MATRIZ_C2_CELIUSMITO_H
 #define MATRIZ_C2_CELIUSMITO_H
 
-typedef struct str_matriz{
-    int valores[2][2];
+typedef struct str_complexo{
+    // Partes real e imaginaria do numero complexo
+    double real;
+    double imaginario;
+} Complexo;
+
+
+typedef struct str_matriz2{
+    double valores[2][2];
 } Matriz2x2;
 
 // Calcula determinante de matriz 2x2
-int determinante2x2(Matriz2x2 mat);
+double determinante2x2(Matriz2x2 mat);
 // Calcula primeiro autovalor de matriz 2x2
-int autovalor2x2_1(Matriz2x2 mat);
+Complexo autovalor2x2_1(Matriz2x2 mat);
 // Calcula segundo autovalor de matriz 2x2
-int autovalor2x2_2(Matriz2x2 mat);
+Complexo autovalor2x2_2(Matriz2x2 mat);
 
 #endif
