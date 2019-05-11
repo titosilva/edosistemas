@@ -13,6 +13,8 @@ typedef struct str_matriz2{
     double valores[2][2];
 } Matriz2x2;
 
+// Gera uma matriz 2x2, solicitando valores ao usuario
+Matriz2x2 gerar_matriz2x2();
 // Calcula determinante de matriz 2x2
 double determinante2x2(Matriz2x2 mat);
 // Calcula traço de matriz 2x2

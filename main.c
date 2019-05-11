@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "matriz.h"
+#include "sistemalinear.h"
 
 int selecao();
-Matriz2x2 gerar_matriz();
 
 int main(){
     printf("BEM VINDO! -CAÇADOR DE SOLUÇÃO DE SISTEMA LINEAR-\n");
@@ -20,7 +20,7 @@ int main(){
         else if(s==0) break;
         else if(s==1);
         else if(s==2){
-            matrizatual = gerar_matriz();
+            matrizatual = gerar_matriz2x2();
             matrizatualdef = 1; 
         }else if(s==3){
             if(matrizatualdef) printf("%f\t%f\n%f\t%f\n", 
@@ -30,14 +30,33 @@ int main(){
                 printf("Matriz não definida :(\n");
                 printf("Use \'gerarmatriz\' para definir uma matriz atual ;)\n");
             }
+        }else if(s==4){
+            if(!matrizatualdef) printf("Matriz não definida :(\nUse \'gerarmatriz\' para definir uma matriz atual ;)\n");
+            else{
+                Complexo a1, a2;
+                a1 = autovalor2x2_1(matrizatual);
+                a2 = autovalor2x2_2(matrizatual);
+
+                if(a1.imaginario==0 && a2.imaginario==0){
+                    printf("Autovalores: %lf e %lf\n", a1.real, a2.real);
+                }else{
+                    printf("Autovalores: %lf + i(%lf) e %lf + i(%lf)\n", a1.real, a1.imaginario, a2.real, a2.imaginario);
+                }
+            }
+        }else if(s==5){
+            if(matrizatualdef) solucionarSistema2x2(matrizatual); 
+            else{
+                printf("Matriz não definida :(\n");
+                printf("Use \'gerarmatriz\' para definir uma matriz atual ;)\n");
+            }
         }else if(s==6){
-            if(matrizatualdef) printf("det(A) = %f\n", determinante2x2(matrizatual));
+            if(matrizatualdef) printf("det(A) = %lf\n", determinante2x2(matrizatual));
             else{
                 printf("Matriz não definida :(\n");
                 printf("Use \'gerarmatriz\' para definir uma matriz atual ;)\n");
             }
         }else if(s==7){
-            if(matrizatualdef) printf("tr(A) = %f\n", traco2x2(matrizatual));
+            if(matrizatualdef) printf("tr(A) = %lf\n", traco2x2(matrizatual));
             else{
                 printf("Matriz não definida :(\n");
                 printf("Use \'gerarmatriz\' para definir uma matriz atual ;)\n");
@@ -82,16 +101,4 @@ int selecao(){
         printf("Use \'ajuda\' para receber ajuda ;)\n");
         return -1;
     }
-}
-
-Matriz2x2 gerar_matriz(){
-    Matriz2x2 retorno;
-    printf("Digite os valores da matriz na forma:\n");
-    printf("valor (tab) valor\n");
-    printf("valor (tab) valor\n");
-
-    scanf("%lf %lf", &retorno.valores[0][0], &retorno.valores[0][1]);
-    scanf("%lf %lf", &retorno.valores[1][0], &retorno.valores[1][1]);
-
-    return retorno;
 }
