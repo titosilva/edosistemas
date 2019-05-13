@@ -18,11 +18,11 @@ int solucionarSistema2x2(Matriz2x2 mat){
                 printf("Sistema do tipo z'(t) = Az(t)\n");
                 printf("Autovalores iguais e dim Nuc(A-aI) = 1, com a sendo autovalor de A\n");
                 printf("\nSoluções:\n");
-                printf("z(t)=e^(%lft)*(u1+(k1t+k2)v1, u2+(k1t+k2)v2))\n");
+                printf("z(t)=e^(%lft)*(u1*k1+(k1t+k2)v1, u2*k1+(k1t+k2)v2))\n", a1.real);
                 printf("Onde v=(v1,v2) é autovetor da matriz A e u=(u1,u2) é tal que v=(A-aI)u\n");
                 printf("k1 e k2 são constantes que dependem das condições iniciais\n");
-                printf("Assim, v=(c1, %lf*c1) e u=(c2, (c1-c2(%lf))/%lf)", (a1.real-mat.valores[0][0])/mat.valores[0][1],
-                       );
+                printf("Assim, v=(c1, %lf*c1) e u=(c2, (c1-c2(%lf))/%lf)\n", (a1.real-mat.valores[0][0])/mat.valores[0][1],
+                       mat.valores[0][0]-a1.real, mat.valores[0][1]);
             }
         }else{
             printf("Sistema do tipo z'(t) = Az(t)\n");
